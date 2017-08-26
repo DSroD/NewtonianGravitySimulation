@@ -1,0 +1,2 @@
+Numerical simulation of 2D solar system based on pure Newtonian mechanics.
+Initial planet positions are not based on real their real positions (yet), rather thier distance from sun on 12:00am, July 6, 2018 (Earth in apohelios)

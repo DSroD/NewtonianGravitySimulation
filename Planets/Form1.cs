@@ -24,7 +24,6 @@ namespace Planets
         bool showInfo = false;
         bool pause = false;
 
-        bool follow;
         Body fl;
 
         float posx = 0;
@@ -49,12 +48,12 @@ namespace Planets
                 ,new Body("Moon", 3.694f * (float)Math.Pow(10, -8), new Vector(0.9493f, 0f), new Vector(0, -1.01671033f), Color.Gray)
                 ,new Body("Mars", 3.23f * (float)Math.Pow(10, -7), new Vector(0f, -0.869f), new Vector(-1.417f, 0f), Color.Red)
                 ,new Body("Jupiter", 9.54f * (float)Math.Pow(10, -4), new Vector(0f, -0.4225f), new Vector(-5.397f, 0f), Color.DarkOrange)
-                ,new Body("Ganymede", 7.4506f * (float)Math.Pow(10, -8), new Vector(0f, -0.7877f), new Vector(-5.4041552f, 0f), Color.YellowGreen)
+                ,new Body("Ganymede", 7.4506f * (float)Math.Pow(10, -8), new Vector(0f, -0.7887f), new Vector(-5.4041552f, 0f), Color.YellowGreen)
                 ,new Body("Saturn", 2.86f * (float)Math.Pow(10, -4), new Vector(-0.3058f, 0f), new Vector(0f, 10.07f), Color.Orange)
                 ,new Body("Titan", 6.7652f * (float)Math.Pow(10, -8), new Vector(-0.4928f, 0f), new Vector(0f, 10.07817108f), Color.White)
                 ,new Body("Uranus", 4.37f * (float)Math.Pow(10, -5), new Vector(0.2199f, 0f), new Vector(0f, -19.88f), Color.Teal)
                 ,new Body("Neptune", 5.15f * (float)Math.Pow(10, -5), new Vector(0f, -0.1829f), new Vector(-29.94f, 0f), Color.DarkBlue)
-                //,new Body("Anotha Star", 14f, new Vector(1.082f, -0.128f), new Vector(-60.06f, 15f), Color.OrangeRed)
+                //,new Body("Solar System Destroyer", 20f, new Vector(1.082f, -0.128f), new Vector(-60.06f, 15f), Color.OrangeRed)
 
             };
             s = new BodySystem(bds, 1);
