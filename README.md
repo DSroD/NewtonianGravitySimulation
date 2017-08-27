@@ -1,2 +1,3 @@
 Numerical simulation of 2D solar system based on pure Newtonian mechanics.
-Initial planet positions are not based on real their real positions (yet), rather thier distance from sun on 12:00am, July 6, 2018 (Earth in apohelios)
+Initial planet positions and velocities are based on VSOP87 computation on 2018 Jan 1 12:00 UT1, moon initial positions are not based on real data,
+but only on average distance from it's parent planet and average orbiting velocity.

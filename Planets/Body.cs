@@ -7,6 +7,38 @@ using System.Drawing;
 namespace Planets
 {
 
+    public struct PreciseVector
+    {
+        private double x;
+        private double y;
+
+        public PreciseVector(double x, double y)
+        {
+            this.x = x;
+            this.y = y;
+        }
+
+        public static PreciseVector operator +(PreciseVector a, PreciseVector b)
+        {
+            return new PreciseVector(a.x + b.x, a.y + b.y);
+        }
+
+        public static PreciseVector operator -(PreciseVector a, PreciseVector b)
+        {
+            return new PreciseVector(a.x - b.x, a.y - b.y);
+        }
+
+        public static PreciseVector operator /(PreciseVector a, float b)
+        {
+            return new PreciseVector(a.x / b, a.y / b);
+        }
+
+        public Vector toVector()
+        {
+            return new Vector((float)this.x, (float)this.y);
+        }
+    }
+
     public struct Vector
     {
         private float x;
@@ -38,30 +70,30 @@ namespace Planets
             return new Vector(a.x - b.x, a.y - b.y);
         }
 
-        public static Vector operator / (Vector a, int b)
+        public static Vector operator / (Vector a, float b)
         {
             return new Vector(a.x / b, a.y / b);
         }
 
-        public static double scalar(Vector a, Vector b)
+        public static float scalar(Vector a, Vector b)
         {
             return a.x * b.x + a.y * b.y;
         }
 
-        public static double length(Vector v)
+        public static float length(Vector v)
         {
-            return Math.Sqrt(Math.Pow(v.x, 2) + Math.Pow(v.y, 2));
+            return (float)Math.Sqrt(Math.Pow(v.x, 2) + Math.Pow(v.y, 2));
         }
 
-        public static double distance(Vector a, Vector b)
+        public static float distance(Vector a, Vector b)
         {
-            return Math.Sqrt(Math.Pow(a.x - b.x, 2) + Math.Pow(a.y - b.y, 2));
+            return (float)Math.Sqrt(Math.Pow(a.x - b.x, 2) + Math.Pow(a.y - b.y, 2));
         }
 
-        public static double angle(Vector a, Vector b)
+        public static float angle(Vector a, Vector b)
         {
-            double cos = scalar(a, b) / (length(a) * length(b));
-            return Math.Acos(cos);
+            float cos = scalar(a, b) / (length(a) * length(b));
+            return (float)Math.Acos(cos);
         }
 
         public static Vector Zero
@@ -129,7 +161,7 @@ namespace Planets
             prev = position;
             tendency += accel * deltaT;
             position += tendency * deltaT;
-            if(p.Length < maxpoints/Vector.length(this.tendency) + 0.9/deltaT + 100*mass)
+            if(p.Length < maxpoints * Vector.length(this.tendency) + 0.9/deltaT + 100*mass )
             {
                 p = addPoint(position);
             }

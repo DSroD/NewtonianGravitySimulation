@@ -42,17 +42,17 @@ namespace Planets
             InitializeComponent();
             Body[] bds = new Body[] {
                 new Body("Sun", 1f, new Vector(0f, 0f), new Vector(0f, 0f), Color.Orange)
-                ,new Body("Mercury", 1.66f * (float)Math.Pow(10, -7), new Vector(0f, 1.405f), new Vector(0.439f, 0f), Color.PaleVioletRed)
-                ,new Body("Venus",  2.45f * (float)Math.Pow(10, -6), new Vector(0f, -1.177f), new Vector(-0.7227f, 0f), Color.OrangeRed)
-                ,new Body("Earth", 3f * (float)Math.Pow(10, -6), new Vector(0.9835f, 0f), new Vector(0f, -1.01409533f), Color.Blue)
-                ,new Body("Moon", 3.694f * (float)Math.Pow(10, -8), new Vector(0.9493f, 0f), new Vector(0, -1.01671033f), Color.Gray)
-                ,new Body("Mars", 3.23f * (float)Math.Pow(10, -7), new Vector(0f, -0.869f), new Vector(-1.417f, 0f), Color.Red)
-                ,new Body("Jupiter", 9.54f * (float)Math.Pow(10, -4), new Vector(0f, -0.4225f), new Vector(-5.397f, 0f), Color.DarkOrange)
-                ,new Body("Ganymede", 7.4506f * (float)Math.Pow(10, -8), new Vector(0f, -0.7887f), new Vector(-5.4041552f, 0f), Color.YellowGreen)
-                ,new Body("Saturn", 2.86f * (float)Math.Pow(10, -4), new Vector(-0.3058f, 0f), new Vector(0f, 10.07f), Color.Orange)
-                ,new Body("Titan", 6.7652f * (float)Math.Pow(10, -8), new Vector(-0.4928f, 0f), new Vector(0f, 10.07817108f), Color.White)
-                ,new Body("Uranus", 4.37f * (float)Math.Pow(10, -5), new Vector(0.2199f, 0f), new Vector(0f, -19.88f), Color.Teal)
-                ,new Body("Neptune", 5.15f * (float)Math.Pow(10, -5), new Vector(0f, -0.1829f), new Vector(-29.94f, 0f), Color.DarkBlue)
+                ,new Body("Mercury", 1.66f * (float)Math.Pow(10, -7), VOSP87.getPlanetVelocity("mer", 2458120, 0.5f ).toVector(), VOSP87.getPlanetPosition("mer", 2458120).toVector() , Color.PaleVioletRed)
+                ,new Body("Venus",  2.45f * (float)Math.Pow(10, -6), VOSP87.getPlanetVelocity("ven", 2458120, 0.5f ).toVector(), VOSP87.getPlanetPosition("ven", 2458120).toVector(), Color.OrangeRed)
+                ,new Body("Earth", 3f * (float)Math.Pow(10, -6), VOSP87.getPlanetVelocity("ear", 2458120, 0.5f ).toVector(), VOSP87.getPlanetPosition("ear", 2458120).toVector(), Color.Blue)
+                ,new Body("Moon", 3.694f * (float)Math.Pow(10, -8), Moons.getVelocity(VOSP87.getPlanetVelocity("ear", 2458120, 0.5f).toVector(), 0.0336f), Moons.getPosition(VOSP87.getPlanetPosition("ear", 2458120).toVector(), 0.002663f), Color.Gray)
+                ,new Body("Mars", 3.23f * (float)Math.Pow(10, -7), VOSP87.getPlanetVelocity("mar", 2458120, 0.5f ).toVector(), VOSP87.getPlanetPosition("mar", 2458120).toVector(), Color.Red)
+                ,new Body("Jupiter", 9.54f * (float)Math.Pow(10, -4), VOSP87.getPlanetVelocity("jup", 2458120, 0.5f ).toVector(), VOSP87.getPlanetPosition("jup", 2458120).toVector(), Color.DarkOrange)
+                ,new Body("Ganymede", 7.4506f * (float)Math.Pow(10, -8), Moons.getVelocity(VOSP87.getPlanetVelocity("jup", 2458120, 0.5f).toVector(), 0.3592f), Moons.getPosition(VOSP87.getPlanetPosition("jup", 2458120).toVector(), 0.0071552f), Color.YellowGreen)
+                ,new Body("Saturn", 2.86f * (float)Math.Pow(10, -4), VOSP87.getPlanetVelocity("sat", 2458120, 0.5f ).toVector(), VOSP87.getPlanetPosition("sat", 2458120).toVector(), Color.Orange)
+                ,new Body("Titan", 6.7652f * (float)Math.Pow(10, -8), Moons.getVelocity(VOSP87.getPlanetVelocity("sat", 2458120, 0.5f).toVector(), 0.1839f), Moons.getPosition(VOSP87.getPlanetPosition("sat", 2458120).toVector(), 0.00817108f), Color.White)
+                ,new Body("Uranus", 4.37f * (float)Math.Pow(10, -5), VOSP87.getPlanetVelocity("ura", 2458120, 0.5f ).toVector(), VOSP87.getPlanetPosition("ura", 2458120).toVector(), Color.Teal)
+                ,new Body("Neptune", 5.15f * (float)Math.Pow(10, -5), VOSP87.getPlanetVelocity("nep", 2458120, 0.5f ).toVector(), VOSP87.getPlanetPosition("nep", 2458120).toVector(), Color.DarkBlue)
                 //,new Body("Solar System Destroyer", 20f, new Vector(1.082f, -0.128f), new Vector(-60.06f, 15f), Color.OrangeRed)
 
             };
