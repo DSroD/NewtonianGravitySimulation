@@ -122,7 +122,7 @@ namespace Planets
         string name;
         Color c;
         public Vector[] p;
-        int maxpoints = 200;
+        int maxpoints = 300;
         
         public Body(string name,  float mass, Vector tendency, Vector position, Color c)
         {
@@ -159,9 +159,8 @@ namespace Planets
         public void doStep(float deltaT)
         {
             prev = position;
-            tendency += accel * deltaT;
-            position += tendency * deltaT;
-            if(p.Length < maxpoints * Vector.length(this.tendency) + 0.9/deltaT + 100*mass )
+            position += tendency * deltaT + 0.5f * this.accel * (float)Math.Pow(deltaT, 2);
+            if (p.Length < maxpoints * Vector.length(this.tendency) * Vector.length(this.position) + 0.7/deltaT )
             {
                 p = addPoint(position);
             }
@@ -171,8 +170,9 @@ namespace Planets
             }
         }
 
-        public void calculateAccel(List<Body> bodies, float g)
+        public void calculateAccel(List<Body> bodies, float g, float deltaT)
         {
+            Vector pacc = this.accel;
             this.accel = Vector.Zero;
             foreach (Body b in bodies)
             {
@@ -184,6 +184,7 @@ namespace Planets
                     this.accel += new Vector(-(position.X - b.position.X), -(position.Y-b.position.Y)) * rinv * constant;
                 }
             }
+            this.tendency += 0.5f * (pacc + this.accel) * deltaT;
         }
 
         private void ShiftRight<T>(T[] arr, int shifts)

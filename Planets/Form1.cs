@@ -18,8 +18,8 @@ namespace Planets
         BufferedGraphicsContext contx;
         BufferedGraphics bg;
 
-        float deltaT = 0.01f;
-        float size = 12f;
+        float deltaT = 0.0005f;
+        float size = 20f;
         bool drawPath = false;
         bool showInfo = false;
         bool pause = false;
@@ -49,6 +49,7 @@ namespace Planets
                 ,new Body("Mars", 3.23f * (float)Math.Pow(10, -7), VOSP87.getPlanetVelocity("mar", 2458120, 0.5f ).toVector(), VOSP87.getPlanetPosition("mar", 2458120).toVector(), Color.Red)
                 ,new Body("Jupiter", 9.54f * (float)Math.Pow(10, -4), VOSP87.getPlanetVelocity("jup", 2458120, 0.5f ).toVector(), VOSP87.getPlanetPosition("jup", 2458120).toVector(), Color.DarkOrange)
                 ,new Body("Ganymede", 7.4506f * (float)Math.Pow(10, -8), Moons.getVelocity(VOSP87.getPlanetVelocity("jup", 2458120, 0.5f).toVector(), 0.3592f), Moons.getPosition(VOSP87.getPlanetPosition("jup", 2458120).toVector(), 0.0071552f), Color.YellowGreen)
+                ,new Body("Europa", 2.4133f * (float)Math.Pow(10, -8), Moons.getVelocity(VOSP87.getPlanetVelocity("jup", 2458120, 0.5f).toVector(), 0.45235f), Moons.getPosition(VOSP87.getPlanetPosition("jup", 2458120).toVector(), 0.004486f), Color.WhiteSmoke)
                 ,new Body("Saturn", 2.86f * (float)Math.Pow(10, -4), VOSP87.getPlanetVelocity("sat", 2458120, 0.5f ).toVector(), VOSP87.getPlanetPosition("sat", 2458120).toVector(), Color.Orange)
                 ,new Body("Titan", 6.7652f * (float)Math.Pow(10, -8), Moons.getVelocity(VOSP87.getPlanetVelocity("sat", 2458120, 0.5f).toVector(), 0.1839f), Moons.getPosition(VOSP87.getPlanetPosition("sat", 2458120).toVector(), 0.00817108f), Color.White)
                 ,new Body("Uranus", 4.37f * (float)Math.Pow(10, -5), VOSP87.getPlanetVelocity("ura", 2458120, 0.5f ).toVector(), VOSP87.getPlanetPosition("ura", 2458120).toVector(), Color.Teal)
@@ -63,7 +64,7 @@ namespace Planets
             contx = BufferedGraphicsManager.Current;
             bg = contx.Allocate(this.CreateGraphics(), new Rectangle(0, 0, szx, szy));
 
-            timer1.Interval = 50;
+            timer1.Interval = 16;
             timer1.Start();
         }
 

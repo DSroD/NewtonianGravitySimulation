@@ -37,7 +37,7 @@ namespace Planets
         {
             foreach(Body b in bodies)
             {
-                b.calculateAccel(bodies, g);
+                b.calculateAccel(bodies, g, delta_t);
             }
             foreach(Body b in bodies)
             {
