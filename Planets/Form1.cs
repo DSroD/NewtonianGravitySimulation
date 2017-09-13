@@ -33,6 +33,8 @@ namespace Planets
         float prx;
         float pry;
 
+        bool arts = false;
+
         int szx;
         int szy;
 
@@ -64,7 +66,7 @@ namespace Planets
             contx = BufferedGraphicsManager.Current;
             bg = contx.Allocate(this.CreateGraphics(), new Rectangle(0, 0, szx, szy));
 
-            timer1.Interval = 16;
+            timer1.Interval = 6;
             timer1.Start();
         }
 
@@ -128,7 +130,14 @@ namespace Planets
                             {
                                 for(int i = 0; i < b.p.Length - 1; i++)
                                 {
-                                    bg.Graphics.DrawLine(pen, scale(-size, size, 0, szx, b.p[i].X - posx - flx), scale(-size, size, 0, szy, b.p[i].Y - posy - fly), scale(-size, size, 0, szx, b.p[i + 1].X - posx - flx), scale(-size, size, 0, szy, b.p[i + 1].Y - posy - fly));
+                                    if(fl == null || arts == true)
+                                    {
+                                        bg.Graphics.DrawLine(pen, scale(-size, size, 0, szx, b.p[i].X - posx - flx), scale(-size, size, 0, szy, b.p[i].Y - posy - fly), scale(-size, size, 0, szx, b.p[i + 1].X - posx - flx), scale(-size, size, 0, szy, b.p[i + 1].Y - posy - fly));
+                                    }
+                                    else if(b != fl)
+                                    {
+                                        bg.Graphics.DrawLine(pen, scale(-size, size, 0, szx, b.p[i].X - posx - fl.p[i].X), scale(-size, size, 0, szy, b.p[i].Y - posy - fl.p[i].Y), scale(-size, size, 0, szx, b.p[i + 1].X - posx - fl.p[i + 1].X), scale(-size, size, 0, szy, b.p[i + 1].Y - posy - fl.p[i + 1].Y));
+                                    }
                                 }
                             }
                         }
@@ -163,11 +172,13 @@ namespace Planets
 
         private void timer1_Tick(object sender, EventArgs e)
         {
+            timer1.Stop();
             if (!pause)
             {
                 s.simulateStep(deltaT);
                 drawPlanets();
             }
+            timer1.Start();
         }
 
         private void trackBar1_Scroll(object sender, EventArgs e)
@@ -241,6 +252,11 @@ namespace Planets
                 posx = 0;
                 posy = 0;
             }
+        }
+
+        private void checkBox4_CheckedChanged(object sender, EventArgs e)
+        {
+            arts = checkBox4.Checked;
         }
     }
 }

@@ -156,11 +156,16 @@ namespace Planets
 
         }
 
+        public void setMaxPoints(int maxPoints)
+        {
+            this.maxpoints = maxPoints;
+        }
+
         public void doStep(float deltaT)
         {
             prev = position;
             position += tendency * deltaT + 0.5f * this.accel * (float)Math.Pow(deltaT, 2);
-            if (p.Length < maxpoints * Vector.length(this.tendency) * Vector.length(this.position) + 0.7/deltaT )
+            if (p.Length < maxpoints + 0.1/deltaT )
             {
                 p = addPoint(position);
             }
