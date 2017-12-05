@@ -58,8 +58,8 @@ namespace Planets
                 ,new Body("Titan", 6.7652f * (float)Math.Pow(10, -8), Moons.getVelocity(VOSP87.getPlanetVelocity("sat", 2458120, 0.5f).toVector(), 0.1839f), Moons.getPosition(VOSP87.getPlanetPosition("sat", 2458120).toVector(), 0.00817108f), Color.White)
                 ,new Body("Uranus", 4.37f * (float)Math.Pow(10, -5), VOSP87.getPlanetVelocity("ura", 2458120, 0.5f ).toVector(), VOSP87.getPlanetPosition("ura", 2458120).toVector(), Color.Teal)
                 ,new Body("Neptune", 5.15f * (float)Math.Pow(10, -5), VOSP87.getPlanetVelocity("nep", 2458120, 0.5f ).toVector(), VOSP87.getPlanetPosition("nep", 2458120).toVector(), Color.DarkBlue)
-                ,new Body("Solar System Destroyer", 20f, new Vector(1.082f, -0.128f), new Vector(-60.06f, 15f), Color.OrangeRed)
-                ,new Body("Solar System Destroyer2", 20f, new Vector(-3.082f, 2.128f), new Vector(60.06f, -15f), Color.OrangeRed)
+                //,new Body("Solar System Destroyer", 20f, new Vector(1.082f, -0.128f), new Vector(-60.06f, 15f), Color.OrangeRed)
+                //,new Body("Solar System Destroyer2", 80f, new Vector(-3.082f, 2.128f), new Vector(60.06f, -25f), Color.OrangeRed)
 
             };
 
@@ -72,7 +72,7 @@ namespace Planets
             contx = BufferedGraphicsManager.Current;
             bg = contx.Allocate(this.CreateGraphics(), new Rectangle(0, 0, szx, szy));
 
-            timer1.Interval = 2;
+            timer1.Interval = 6;
             timer1.Start();
         }
 

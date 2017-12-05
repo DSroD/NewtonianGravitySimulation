@@ -57,7 +57,7 @@
             // trackBar1
             // 
             this.trackBar1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.trackBar1.Location = new System.Drawing.Point(3, 113);
+            this.trackBar1.Location = new System.Drawing.Point(6, 113);
             this.trackBar1.Maximum = 30;
             this.trackBar1.Minimum = 1;
             this.trackBar1.Name = "trackBar1";
@@ -70,7 +70,7 @@
             // 
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(3, 94);
+            this.label1.Location = new System.Drawing.Point(4, 94);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(52, 13);
             this.label1.TabIndex = 1;
@@ -80,7 +80,7 @@
             // 
             this.trackBar2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.trackBar2.LargeChange = 100;
-            this.trackBar2.Location = new System.Drawing.Point(3, 62);
+            this.trackBar2.Location = new System.Drawing.Point(7, 62);
             this.trackBar2.Maximum = 90000;
             this.trackBar2.Minimum = 10;
             this.trackBar2.Name = "trackBar2";
@@ -104,7 +104,7 @@
             // 
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(924, 9);
+            this.label3.Location = new System.Drawing.Point(913, 9);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(196, 26);
             this.label3.TabIndex = 4;
@@ -138,9 +138,9 @@
             this.panel1.Controls.Add(this.linkLabel1);
             this.panel1.Controls.Add(this.checkBox3);
             this.panel1.Controls.Add(this.checkBox2);
-            this.panel1.Location = new System.Drawing.Point(927, 38);
+            this.panel1.Location = new System.Drawing.Point(916, 38);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(193, 290);
+            this.panel1.Size = new System.Drawing.Size(204, 277);
             this.panel1.TabIndex = 6;
             // 
             // checkBox4
@@ -148,9 +148,9 @@
             this.checkBox4.AutoSize = true;
             this.checkBox4.Location = new System.Drawing.Point(55, 26);
             this.checkBox4.Name = "checkBox4";
-            this.checkBox4.Size = new System.Drawing.Size(135, 17);
+            this.checkBox4.Size = new System.Drawing.Size(138, 17);
             this.checkBox4.TabIndex = 8;
-            this.checkBox4.Text = "Always Relative to Sun";
+            this.checkBox4.Text = "Path Relative to Coords";
             this.checkBox4.UseVisualStyleBackColor = true;
             this.checkBox4.CheckedChanged += new System.EventHandler(this.checkBox4_CheckedChanged);
             // 
@@ -158,7 +158,7 @@
             // 
             this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(3, 239);
+            this.label6.Location = new System.Drawing.Point(4, 239);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(81, 13);
             this.label6.TabIndex = 6;
@@ -187,7 +187,7 @@
             // 
             this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(83, 267);
+            this.label4.Location = new System.Drawing.Point(94, 255);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(41, 13);
             this.label4.TabIndex = 3;
@@ -197,7 +197,7 @@
             // 
             this.linkLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Location = new System.Drawing.Point(130, 267);
+            this.linkLabel1.Location = new System.Drawing.Point(141, 255);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(60, 13);
             this.linkLabel1.TabIndex = 7;

@@ -69,7 +69,7 @@
     </Compile>
     <Compile Include="IntegrationMethod.cs" />
     <Compile Include="IntMethods\Leapfrog.cs" />
-    <Compile Include="IntMethods\RungeKutta.cs" />
+    <Compile Include="IntMethods\RungeKutta4.cs" />
     <Compile Include="Moons.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
