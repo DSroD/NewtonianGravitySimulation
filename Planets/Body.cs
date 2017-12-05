@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 using System.Drawing;
 namespace Planets
 {
-
-    public struct PreciseVector
+    #region MATH FUNCTIONS - TODO: VYTVOŘIT SAMOSTATNOU TŘÍDU
+    public struct PreciseVector //TODO: přepsat vše do double precision?
     {
         private double x;
         private double y;
@@ -112,23 +112,26 @@ namespace Planets
         }
     }
 
+    #endregion
+
     public class Body
     {
-        private float mass;
+        public float mass;
+        public float radius;
         public Vector accel;
-        public Vector tendency;
+        public Vector velocity;
         public Vector position;
         public Vector prev;
         string name;
         Color c;
-        public Vector[] p;
-        int maxpoints = 300;
+        public Vector[] p; //předchozí body pro vykreslení trajektorie
+        int maxpoints = 300; //počet bodů pro vykreslení trajektorie
         
-        public Body(string name,  float mass, Vector tendency, Vector position, Color c)
+        public Body(string name,  float mass, Vector velocity, Vector position, Color c)
         {
             this.c = c;
             this.mass = mass;
-            this.tendency = tendency;
+            this.velocity = velocity;
             this.position = position;
             this.name = name;
             p = new Vector[0];
@@ -161,11 +164,9 @@ namespace Planets
             this.maxpoints = maxPoints;
         }
 
-        public void doStep(float deltaT)
+        public void savePoint(float deltaT)
         {
-            prev = position;
-            position += tendency * deltaT + 0.5f * this.accel * (float)Math.Pow(deltaT, 2);
-            if (p.Length < maxpoints + 0.1/deltaT )
+            if (p.Length < maxpoints + 0.1 / deltaT)
             {
                 p = addPoint(position);
             }
@@ -173,6 +174,15 @@ namespace Planets
             {
                 p = shiftRight(p, position);
             }
+        }
+
+        #region OLD INTEGRATION FUNCTIONS - NO LONGER IN USE
+
+        public void doStep(float deltaT)
+        {
+            //prev = position;
+            position += velocity * deltaT + 0.5f * this.accel * (float)Math.Pow(deltaT, 2);
+            savePoint(deltaT);
         }
 
         public void calculateAccel(List<Body> bodies, float g, float deltaT)
@@ -189,8 +199,10 @@ namespace Planets
                     this.accel += new Vector(-(position.X - b.position.X), -(position.Y-b.position.Y)) * rinv * constant;
                 }
             }
-            this.tendency += 0.5f * (pacc + this.accel) * deltaT;
+            this.velocity += 0.5f * (pacc + this.accel) * deltaT;
         }
+
+        #endregion
 
         private void ShiftRight<T>(T[] arr, int shifts)
         {

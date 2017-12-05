@@ -10,12 +10,10 @@ namespace Planets
     {
 
         private List<Body> bodies;
-        private float g;
 
-        public BodySystem(Body[] bodies, float g)
+        public BodySystem(Body[] bodies)
         {
             this.bodies = bodies.ToList();
-            this.g = g;
         }
 
         public void addBody(Body b)
@@ -23,26 +21,15 @@ namespace Planets
             bodies.Add(b);
         }
 
-        public void setg(float g)
-        {
-            this.g = g;
-        }
-
         public void removeBody(Body b)
         {
             bodies.Remove(b);
         }
 
-        public void simulateStep(float delta_t)
+        public void simulateStep(float delta_t, IntegrationMethod i)
         {
-            foreach(Body b in bodies)
-            {
-                b.calculateAccel(bodies, g, delta_t);
-            }
-            foreach(Body b in bodies)
-            {
-                b.doStep(delta_t);
-            }
+            i.calculateAccelerations(bodies, delta_t);
+            i.move(bodies, delta_t);
         }
 
         public List<Body> Bodies

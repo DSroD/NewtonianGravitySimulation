@@ -67,6 +67,9 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="IntegrationMethod.cs" />
+    <Compile Include="IntMethods\Leapfrog.cs" />
+    <Compile Include="IntMethods\RungeKutta.cs" />
     <Compile Include="Moons.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

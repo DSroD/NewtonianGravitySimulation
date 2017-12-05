@@ -37,6 +37,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.checkBox4 = new System.Windows.Forms.CheckBox();
             this.label6 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
@@ -44,7 +45,6 @@
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.checkBox3 = new System.Windows.Forms.CheckBox();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.checkBox4 = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar2)).BeginInit();
             this.panel1.SuspendLayout();
@@ -108,7 +108,7 @@
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(196, 26);
             this.label3.TabIndex = 4;
-            this.label3.Text = "Numerical simulation of 2D Solar System\r\nbased on pure Newtonian mechanics.\r\n";
+            this.label3.Text = "Numerical simulation of 2D Solar System\r\nbased on Newtonian mechanics.\r\n";
             // 
             // checkBox1
             // 
@@ -142,6 +142,17 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(193, 290);
             this.panel1.TabIndex = 6;
+            // 
+            // checkBox4
+            // 
+            this.checkBox4.AutoSize = true;
+            this.checkBox4.Location = new System.Drawing.Point(55, 26);
+            this.checkBox4.Name = "checkBox4";
+            this.checkBox4.Size = new System.Drawing.Size(135, 17);
+            this.checkBox4.TabIndex = 8;
+            this.checkBox4.Text = "Always Relative to Sun";
+            this.checkBox4.UseVisualStyleBackColor = true;
+            this.checkBox4.CheckedChanged += new System.EventHandler(this.checkBox4_CheckedChanged);
             // 
             // label6
             // 
@@ -217,17 +228,6 @@
             this.checkBox2.Text = "Show info";
             this.checkBox2.UseVisualStyleBackColor = true;
             this.checkBox2.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
-            // 
-            // checkBox4
-            // 
-            this.checkBox4.AutoSize = true;
-            this.checkBox4.Location = new System.Drawing.Point(55, 26);
-            this.checkBox4.Name = "checkBox4";
-            this.checkBox4.Size = new System.Drawing.Size(135, 17);
-            this.checkBox4.TabIndex = 8;
-            this.checkBox4.Text = "Always Relative to Sun";
-            this.checkBox4.UseVisualStyleBackColor = true;
-            this.checkBox4.CheckedChanged += new System.EventHandler(this.checkBox4_CheckedChanged);
             // 
             // Form1
             // 

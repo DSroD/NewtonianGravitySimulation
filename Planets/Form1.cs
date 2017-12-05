@@ -14,6 +14,8 @@ namespace Planets
     public partial class Form1 : Form
     {
 
+        IntegrationMethod i;
+
         BodySystem s;
         BufferedGraphicsContext contx;
         BufferedGraphics bg;
@@ -56,17 +58,21 @@ namespace Planets
                 ,new Body("Titan", 6.7652f * (float)Math.Pow(10, -8), Moons.getVelocity(VOSP87.getPlanetVelocity("sat", 2458120, 0.5f).toVector(), 0.1839f), Moons.getPosition(VOSP87.getPlanetPosition("sat", 2458120).toVector(), 0.00817108f), Color.White)
                 ,new Body("Uranus", 4.37f * (float)Math.Pow(10, -5), VOSP87.getPlanetVelocity("ura", 2458120, 0.5f ).toVector(), VOSP87.getPlanetPosition("ura", 2458120).toVector(), Color.Teal)
                 ,new Body("Neptune", 5.15f * (float)Math.Pow(10, -5), VOSP87.getPlanetVelocity("nep", 2458120, 0.5f ).toVector(), VOSP87.getPlanetPosition("nep", 2458120).toVector(), Color.DarkBlue)
-                //,new Body("Solar System Destroyer", 20f, new Vector(1.082f, -0.128f), new Vector(-60.06f, 15f), Color.OrangeRed)
+                ,new Body("Solar System Destroyer", 20f, new Vector(1.082f, -0.128f), new Vector(-60.06f, 15f), Color.OrangeRed)
+                ,new Body("Solar System Destroyer2", 20f, new Vector(-3.082f, 2.128f), new Vector(60.06f, -15f), Color.OrangeRed)
 
             };
-            s = new BodySystem(bds, 1);
+
+            i = new IntMethods.Leapfrog(1);
+
+            s = new BodySystem(bds);
 
             szx = this.Width;
             szy = this.Height;
             contx = BufferedGraphicsManager.Current;
             bg = contx.Allocate(this.CreateGraphics(), new Rectangle(0, 0, szx, szy));
 
-            timer1.Interval = 6;
+            timer1.Interval = 2;
             timer1.Start();
         }
 
@@ -147,8 +153,8 @@ namespace Planets
                         if (showInfo && !toosmall2)
                         {
                             bg.Graphics.DrawString("Position: (" + b.position.X + "," + b.position.Y + ")", f, br, scale(-size, size, 0, szx, b.position.X - posx - flx) + sz + 1, scale(-size, size, 0, szy, b.position.Y - posy - fly) + sz + 14);
-                            bg.Graphics.DrawString("Velocity elements: (" + b.tendency.X + "," + b.tendency.Y + ")", f, br, scale(-size, size, 0, szx, b.position.X - posx - flx) + sz + 1, scale(-size, size, 0, szy, b.position.Y - posy - fly) + sz + 26);
-                            bg.Graphics.DrawString("Velocity: " + Math.Sqrt(Math.Pow(b.tendency.X, 2) + Math.Pow(b.tendency.Y, 2)), f, br, scale(-size, size, 0, szx, b.position.X - posx - flx) + sz + 1, scale(-size, size, 0, szy, b.position.Y - posy - fly) + sz + 38);
+                            bg.Graphics.DrawString("Velocity elements: (" + b.velocity.X + "," + b.velocity.Y + ")", f, br, scale(-size, size, 0, szx, b.position.X - posx - flx) + sz + 1, scale(-size, size, 0, szy, b.position.Y - posy - fly) + sz + 26);
+                            bg.Graphics.DrawString("Velocity: " + Math.Sqrt(Math.Pow(b.velocity.X, 2) + Math.Pow(b.velocity.Y, 2)), f, br, scale(-size, size, 0, szx, b.position.X - posx - flx) + sz + 1, scale(-size, size, 0, szy, b.position.Y - posy - fly) + sz + 38);
                             if (b.Name != "Sun")
                             {
                                 bg.Graphics.DrawString("Distance from Sun: " + Math.Sqrt(Math.Pow(b.position.X - s.Bodies[0].position.X, 2) + Math.Pow(b.position.Y - s.Bodies[0].position.Y, 2)), f, br, scale(-size, size, 0, szx, b.position.X - posx - flx) + sz + 1, scale(-size, size, 0, szy, b.position.Y - posy - fly) + sz + 50);
@@ -175,7 +181,7 @@ namespace Planets
             timer1.Stop();
             if (!pause)
             {
-                s.simulateStep(deltaT);
+                s.simulateStep(deltaT, i);
                 drawPlanets();
             }
             timer1.Start();
