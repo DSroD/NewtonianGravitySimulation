@@ -56,22 +56,23 @@ namespace Planets.IntMethods
             {
                 for (int i = 0; i < bodies.Count; i++)
                 {
-                    if(i == 0) bodies.ElementAt(i).accel = Vector.Zero;
-                    for (int j = i + 1; j < bodies.Count; j++)
+                    bodies.ElementAt(i).accel = Vector.Zero;
+                    for (int j = 0; j < bodies.Count; j++)
                     {
-                        if(i == 0) bodies.ElementAt(j).accel = Vector.Zero;
-                        float r = Vector.distance(krs[k][i], bodies.ElementAt(j).position);
-                        float r3 = 1 / (float)Math.Pow(r, 3);
-                        Vector ptr = g * (krs[k][i] - bodies.ElementAt(j).position) * r3;
-                        bodies.ElementAt(i).accel += ptr * bodies.ElementAt(j).mass;
-                        bodies.ElementAt(j).accel += ptr * bodies.ElementAt(i).mass;
+                        if (i != j)
+                        {
+                            float r = Vector.distance(krs[k][i], krs[k][j]);
+                            float r3 = 1 / (float)Math.Abs(Math.Pow(r, 3));
+                            Vector ptr = g * (krs[k][i] - krs[k][j]) * r3;
+                            bodies.ElementAt(i).accel += Vector.Zero - ptr * bodies.ElementAt(j).mass;
+                        }
                     }
                     kvs[k][i] = bodies.ElementAt(i).accel;
-                    switch(k)
+                    switch (k)
                     {
                         case 0:
                             krs[k][i] = bodies.ElementAt(i).velocity;
-                            krs[k + 1][i] = bodies.ElementAt(i).position + k0v[i] * (deltaT / 2);
+                            krs[k + 1][i] = bodies.ElementAt(i).position + k0v[i] * (deltaT / 2); //připravení pro výpočet k+1
                             break;
                         case 1:
                             krs[k][i] = bodies.ElementAt(i).velocity + k0v[i] * (deltaT / 2);

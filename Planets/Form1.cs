@@ -63,7 +63,7 @@ namespace Planets
 
             };
 
-            i = new IntMethods.Leapfrog(1);
+            i = new IntMethods.RungeKutta4(1, bds.Length);
 
             s = new BodySystem(bds);
 
