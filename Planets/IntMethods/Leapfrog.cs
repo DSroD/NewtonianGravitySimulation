@@ -32,7 +32,7 @@ namespace Planets.IntMethods
                     bodies.ElementAt(i).accel += (bodies.ElementAt(j).position - bodies.ElementAt(i).position)  * rinv * g * bodies.ElementAt(j).mass;
                     bodies.ElementAt(j).accel += new Vector((bodies.ElementAt(i).position.X - bodies.ElementAt(j).position.X), (bodies.ElementAt(i).position.Y - bodies.ElementAt(j).position.Y)) * rinv * g * bodies.ElementAt(i).mass;
                 }
-                bodies.ElementAt(i).velocity += 0.5f * (paccs[i] + bodies.ElementAt(i).accel) * deltaT; //v_(i+1) = v_i + (a_i + a_(i+1)) * deltaT/2
+                bodies.ElementAt(i).velocity += 0.5f * (paccs[i] + bodies.ElementAt(i).accel) * deltaT;  //v_(i+1) = v_i + (a_i + a_(i+1)) * deltaT/2
             }
         }
 

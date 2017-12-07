@@ -24,7 +24,7 @@ namespace Planets
         float size = 20f;
         bool drawPath = false;
         bool showInfo = false;
-        bool pause = false;
+        bool pause = true;
 
         Body fl;
 
@@ -46,18 +46,18 @@ namespace Planets
             InitializeComponent();
             Body[] bds = new Body[] {
                 new Body("Sun", 1f, new Vector(0f, 0f), new Vector(0f, 0f), Color.Orange)
-                ,new Body("Mercury", 1.66f * (float)Math.Pow(10, -7), VOSP87.getPlanetVelocity("mer", 2458120, 0.5f ).toVector(), VOSP87.getPlanetPosition("mer", 2458120).toVector() , Color.PaleVioletRed)
-                ,new Body("Venus",  2.45f * (float)Math.Pow(10, -6), VOSP87.getPlanetVelocity("ven", 2458120, 0.5f ).toVector(), VOSP87.getPlanetPosition("ven", 2458120).toVector(), Color.OrangeRed)
+                ,new Body("Mercury", 1.660f * (float)Math.Pow(10, -7), VOSP87.getPlanetVelocity("mer", 2458120, 0.5f ).toVector(), VOSP87.getPlanetPosition("mer", 2458120).toVector() , Color.PaleVioletRed)
+                ,new Body("Venus",  2.450f * (float)Math.Pow(10, -6), VOSP87.getPlanetVelocity("ven", 2458120, 0.5f ).toVector(), VOSP87.getPlanetPosition("ven", 2458120).toVector(), Color.OrangeRed)
                 ,new Body("Earth", 3f * (float)Math.Pow(10, -6), VOSP87.getPlanetVelocity("ear", 2458120, 0.5f ).toVector(), VOSP87.getPlanetPosition("ear", 2458120).toVector(), Color.Blue)
                 ,new Body("Moon", 3.694f * (float)Math.Pow(10, -8), Moons.getVelocity(VOSP87.getPlanetVelocity("ear", 2458120, 0.5f).toVector(), 0.0336f), Moons.getPosition(VOSP87.getPlanetPosition("ear", 2458120).toVector(), 0.002663f), Color.Gray)
-                ,new Body("Mars", 3.23f * (float)Math.Pow(10, -7), VOSP87.getPlanetVelocity("mar", 2458120, 0.5f ).toVector(), VOSP87.getPlanetPosition("mar", 2458120).toVector(), Color.Red)
-                ,new Body("Jupiter", 9.54f * (float)Math.Pow(10, -4), VOSP87.getPlanetVelocity("jup", 2458120, 0.5f ).toVector(), VOSP87.getPlanetPosition("jup", 2458120).toVector(), Color.DarkOrange)
+                ,new Body("Mars", 3.230f * (float)Math.Pow(10, -7), VOSP87.getPlanetVelocity("mar", 2458120, 0.5f ).toVector(), VOSP87.getPlanetPosition("mar", 2458120).toVector(), Color.Red)
+                ,new Body("Jupiter", 9.540f * (float)Math.Pow(10, -4), VOSP87.getPlanetVelocity("jup", 2458120, 0.5f ).toVector(), VOSP87.getPlanetPosition("jup", 2458120).toVector(), Color.DarkOrange)
                 ,new Body("Ganymede", 7.4506f * (float)Math.Pow(10, -8), Moons.getVelocity(VOSP87.getPlanetVelocity("jup", 2458120, 0.5f).toVector(), 0.3592f), Moons.getPosition(VOSP87.getPlanetPosition("jup", 2458120).toVector(), 0.0071552f), Color.YellowGreen)
-                ,new Body("Europa", 2.4133f * (float)Math.Pow(10, -8), Moons.getVelocity(VOSP87.getPlanetVelocity("jup", 2458120, 0.5f).toVector(), 0.45235f), Moons.getPosition(VOSP87.getPlanetPosition("jup", 2458120).toVector(), 0.004486f), Color.WhiteSmoke)
-                ,new Body("Saturn", 2.86f * (float)Math.Pow(10, -4), VOSP87.getPlanetVelocity("sat", 2458120, 0.5f ).toVector(), VOSP87.getPlanetPosition("sat", 2458120).toVector(), Color.Orange)
+                ,new Body("Europa", 2.4133f * (float)Math.Pow(10, -8), Moons.getVelocity(VOSP87.getPlanetVelocity("jup", 2458120, 0.5f).toVector(), -0.45235f), Moons.getPosition(VOSP87.getPlanetPosition("jup", 2458120).toVector(), -0.004486f), Color.WhiteSmoke)
+                ,new Body("Saturn", 2.860f * (float)Math.Pow(10, -4), VOSP87.getPlanetVelocity("sat", 2458120, 0.5f ).toVector(), VOSP87.getPlanetPosition("sat", 2458120).toVector(), Color.Orange)
                 ,new Body("Titan", 6.7652f * (float)Math.Pow(10, -8), Moons.getVelocity(VOSP87.getPlanetVelocity("sat", 2458120, 0.5f).toVector(), 0.1839f), Moons.getPosition(VOSP87.getPlanetPosition("sat", 2458120).toVector(), 0.00817108f), Color.White)
-                ,new Body("Uranus", 4.37f * (float)Math.Pow(10, -5), VOSP87.getPlanetVelocity("ura", 2458120, 0.5f ).toVector(), VOSP87.getPlanetPosition("ura", 2458120).toVector(), Color.Teal)
-                ,new Body("Neptune", 5.15f * (float)Math.Pow(10, -5), VOSP87.getPlanetVelocity("nep", 2458120, 0.5f ).toVector(), VOSP87.getPlanetPosition("nep", 2458120).toVector(), Color.DarkBlue)
+                ,new Body("Uranus", 4.370f * (float)Math.Pow(10, -5), VOSP87.getPlanetVelocity("ura", 2458120, 0.5f ).toVector(), VOSP87.getPlanetPosition("ura", 2458120).toVector(), Color.Teal)
+                ,new Body("Neptune", 5.150f * (float)Math.Pow(10, -5), VOSP87.getPlanetVelocity("nep", 2458120, 0.5f ).toVector(), VOSP87.getPlanetPosition("nep", 2458120).toVector(), Color.DarkBlue)
                 //,new Body("Solar System Destroyer", 20f, new Vector(1.082f, -0.128f), new Vector(-60.06f, 15f), Color.OrangeRed)
                 //,new Body("Solar System Destroyer2", 80f, new Vector(-3.082f, 2.128f), new Vector(60.06f, -25f), Color.OrangeRed)
 
@@ -94,7 +94,7 @@ namespace Planets
                 {
                     bool toosmall = false;
                     bool toosmall2 = false;
-                    float sz = 30 * b.Mass / size;
+                    float sz = 30 * b.Mass / (size);
                     if (sz <= 4 && sz > 0.0001f)
                     {
                         sz = 4;
@@ -201,6 +201,7 @@ namespace Planets
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
             this.drawPath = checkBox1.Checked;
+            drawPlanets();
         }
 
         private void Form1_MouseDown(object sender, MouseEventArgs e)
@@ -237,6 +238,8 @@ namespace Planets
         private void checkBox3_CheckedChanged(object sender, EventArgs e)
         {
             this.pause = checkBox3.Checked;
+            stepper.Enabled = checkBox3.Checked;
+            step_button.Enabled = checkBox3.Checked;
         }
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -258,11 +261,24 @@ namespace Planets
                 posx = 0;
                 posy = 0;
             }
+            drawPlanets();
         }
 
         private void checkBox4_CheckedChanged(object sender, EventArgs e)
         {
             arts = checkBox4.Checked;
+            drawPlanets();
+        }
+
+        private void step_button_Click(object sender, EventArgs e)
+        {
+            for(int n = 0; n < stepper.Value; n++)
+            {
+                if (!pause) break;
+                s.simulateStep(deltaT, i);
+                drawPlanets();
+
+            }
         }
     }
 }

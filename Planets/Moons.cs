@@ -10,12 +10,12 @@ namespace Planets
     {
         public static Vector getPosition(Vector parentPos, float avgdist)
         {
-            return parentPos + avgdist * parentPos / Vector.length(parentPos);
+            return parentPos + avgdist * (parentPos / Vector.length(parentPos));
         }
 
         public static Vector getVelocity(Vector parentVelocity, float avgvelocity)
         {
-            return parentVelocity + avgvelocity * parentVelocity / Vector.length(parentVelocity);
+            return parentVelocity + avgvelocity * (parentVelocity / Vector.length(parentVelocity));
         }
     }
 }

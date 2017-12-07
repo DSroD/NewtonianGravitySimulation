@@ -37,6 +37,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.step_button = new System.Windows.Forms.Button();
+            this.stepper = new System.Windows.Forms.TrackBar();
             this.checkBox4 = new System.Windows.Forms.CheckBox();
             this.label6 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
@@ -48,6 +50,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar2)).BeginInit();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.stepper)).BeginInit();
             this.SuspendLayout();
             // 
             // timer1
@@ -58,7 +61,7 @@
             // 
             this.trackBar1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.trackBar1.Location = new System.Drawing.Point(6, 113);
-            this.trackBar1.Maximum = 30;
+            this.trackBar1.Maximum = 20;
             this.trackBar1.Minimum = 1;
             this.trackBar1.Name = "trackBar1";
             this.trackBar1.Size = new System.Drawing.Size(182, 45);
@@ -125,6 +128,8 @@
             // panel1
             // 
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.Controls.Add(this.step_button);
+            this.panel1.Controls.Add(this.stepper);
             this.panel1.Controls.Add(this.checkBox4);
             this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.checkBox1);
@@ -140,8 +145,30 @@
             this.panel1.Controls.Add(this.checkBox2);
             this.panel1.Location = new System.Drawing.Point(916, 38);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(204, 277);
+            this.panel1.Size = new System.Drawing.Size(204, 327);
             this.panel1.TabIndex = 6;
+            // 
+            // step_button
+            // 
+            this.step_button.Enabled = false;
+            this.step_button.Location = new System.Drawing.Point(110, 268);
+            this.step_button.Name = "step_button";
+            this.step_button.Size = new System.Drawing.Size(75, 23);
+            this.step_button.TabIndex = 10;
+            this.step_button.Text = "Step";
+            this.step_button.UseVisualStyleBackColor = true;
+            this.step_button.Click += new System.EventHandler(this.step_button_Click);
+            // 
+            // stepper
+            // 
+            this.stepper.Enabled = false;
+            this.stepper.Location = new System.Drawing.Point(7, 255);
+            this.stepper.Maximum = 100;
+            this.stepper.Minimum = 1;
+            this.stepper.Name = "stepper";
+            this.stepper.Size = new System.Drawing.Size(104, 45);
+            this.stepper.TabIndex = 9;
+            this.stepper.Value = 1;
             // 
             // checkBox4
             // 
@@ -187,7 +214,7 @@
             // 
             this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(94, 255);
+            this.label4.Location = new System.Drawing.Point(94, 303);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(41, 13);
             this.label4.TabIndex = 3;
@@ -197,7 +224,7 @@
             // 
             this.linkLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Location = new System.Drawing.Point(141, 255);
+            this.linkLabel1.Location = new System.Drawing.Point(141, 303);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(60, 13);
             this.linkLabel1.TabIndex = 7;
@@ -209,6 +236,8 @@
             // 
             this.checkBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.checkBox3.AutoSize = true;
+            this.checkBox3.Checked = true;
+            this.checkBox3.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBox3.Location = new System.Drawing.Point(3, 164);
             this.checkBox3.Name = "checkBox3";
             this.checkBox3.Size = new System.Drawing.Size(56, 17);
@@ -245,6 +274,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.trackBar2)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.stepper)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -268,6 +298,8 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.CheckBox checkBox4;
+        private System.Windows.Forms.Button step_button;
+        private System.Windows.Forms.TrackBar stepper;
     }
 }
 

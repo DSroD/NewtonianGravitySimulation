@@ -23,6 +23,16 @@ namespace Planets
             return new PreciseVector(a.x + b.x, a.y + b.y);
         }
 
+        public static PreciseVector operator *(float a, PreciseVector b)
+        {
+            return new PreciseVector(a * b.x, a * b.y);
+        }
+
+        public static PreciseVector operator *(PreciseVector a, float b)
+        {
+            return b * a;
+        }
+
         public static PreciseVector operator -(PreciseVector a, PreciseVector b)
         {
             return new PreciseVector(a.x - b.x, a.y - b.y);
@@ -33,9 +43,50 @@ namespace Planets
             return new PreciseVector(a.x / b, a.y / b);
         }
 
+        public static double scalar(PreciseVector a, PreciseVector b)
+        {
+            return a.x * b.x + a.y * b.y;
+        }
+
+        public static double length(PreciseVector v)
+        {
+            return Math.Sqrt(Math.Pow(v.x, 2) + Math.Pow(v.y, 2));
+        }
+
+        public static double distance(PreciseVector a, PreciseVector b)
+        {
+            return Math.Sqrt(Math.Pow(a.x - b.x, 2) + Math.Pow(a.y - b.y, 2));
+        }
+
+        public static double angle(PreciseVector a, PreciseVector b)
+        {
+            double cos = scalar(a, b) / (length(a) * length(b));
+            return Math.Acos(cos);
+        }
+
+        public static PreciseVector Zero
+        {
+            get { return new PreciseVector(0, 0); }
+        }
+
+        public double X
+        {
+            get { return x; }
+        }
+
+        public double Y
+        {
+            get { return y; }
+        }
+
         public Vector toVector()
         {
             return new Vector((float)this.x, (float)this.y);
+        }
+
+        public static explicit operator Vector(PreciseVector a)
+        {
+            return new Vector((float)a.x, (float)a.y);
         }
     }
 
@@ -109,6 +160,11 @@ namespace Planets
         public float Y
         {
             get { return y; }
+        }
+
+        public static implicit operator PreciseVector(Vector a)
+        {
+            return new PreciseVector(a.x, a.y);
         }
     }
 
