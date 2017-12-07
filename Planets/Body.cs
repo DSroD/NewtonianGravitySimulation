@@ -222,7 +222,7 @@ namespace Planets
 
         public void savePoint(float deltaT)
         {
-            if (p.Length < maxpoints + 0.1 / deltaT)
+            if (p.Length < maxpoints + 0.1 / (5 * deltaT))
             {
                 p = addPoint(position);
             }
