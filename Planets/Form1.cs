@@ -28,6 +28,9 @@ namespace Planets
 
         Body fl;
 
+        float flx = 0;
+        float fly = 0;
+
         float posx = 0;
         float posy = 0;
 
@@ -44,6 +47,13 @@ namespace Planets
         public Form1()
         {
             InitializeComponent();
+            ///
+            /// JEDNOTKY, KONSTANTY:
+            /// Hmotnost - Hmotnost slunce = 1
+            ///  Rychlost - Oběžná rychlost Země = 1
+            ///  Délka - 1 au
+            ///  G = 1
+            ///  
             Body[] bds = new Body[] {
                 new Body("Sun", 1f, new Vector(0f, 0f), new Vector(0f, 0f), Color.Orange)
                 ,new Body("Mercury", 1.660f * (float)Math.Pow(10, -7), VOSP87.getPlanetVelocity("mer", 2458120, 0.5f ).toVector(), VOSP87.getPlanetPosition("mer", 2458120).toVector() , Color.PaleVioletRed)
@@ -52,10 +62,13 @@ namespace Planets
                 ,new Body("Moon", 3.694f * (float)Math.Pow(10, -8), Moons.getVelocity(VOSP87.getPlanetVelocity("ear", 2458120, 0.5f).toVector(), 0.0336f), Moons.getPosition(VOSP87.getPlanetPosition("ear", 2458120).toVector(), 0.002663f), Color.Gray)
                 ,new Body("Mars", 3.230f * (float)Math.Pow(10, -7), VOSP87.getPlanetVelocity("mar", 2458120, 0.5f ).toVector(), VOSP87.getPlanetPosition("mar", 2458120).toVector(), Color.Red)
                 ,new Body("Jupiter", 9.540f * (float)Math.Pow(10, -4), VOSP87.getPlanetVelocity("jup", 2458120, 0.5f ).toVector(), VOSP87.getPlanetPosition("jup", 2458120).toVector(), Color.DarkOrange)
+                ,new Body("Io", 4.491944f * (float)Math.Pow(10, -8), Moons.getVelocity(VOSP87.getPlanetVelocity("jup", 2458120, 0.5f).toVector(), 0.58f), Moons.getPosition(VOSP87.getPlanetPosition("jup", 2458120).toVector(), 0.00281935f), Color.DarkRed)
                 ,new Body("Ganymede", 7.4506f * (float)Math.Pow(10, -8), Moons.getVelocity(VOSP87.getPlanetVelocity("jup", 2458120, 0.5f).toVector(), 0.3592f), Moons.getPosition(VOSP87.getPlanetPosition("jup", 2458120).toVector(), 0.0071552f), Color.YellowGreen)
                 ,new Body("Europa", 2.4133f * (float)Math.Pow(10, -8), Moons.getVelocity(VOSP87.getPlanetVelocity("jup", 2458120, 0.5f).toVector(), -0.45235f), Moons.getPosition(VOSP87.getPlanetPosition("jup", 2458120).toVector(), -0.004486f), Color.WhiteSmoke)
+                ,new Body("Callisto", 5.41098f * (float)Math.Pow(10, -8), Moons.getVelocity(VOSP87.getPlanetVelocity("jup", 2458120, 0.5f).toVector(), -0.275f), Moons.getPosition(VOSP87.getPlanetPosition("jup", 2458120).toVector(), -0.012585f), Color.DimGray)
                 ,new Body("Saturn", 2.860f * (float)Math.Pow(10, -4), VOSP87.getPlanetVelocity("sat", 2458120, 0.5f ).toVector(), VOSP87.getPlanetPosition("sat", 2458120).toVector(), Color.Orange)
                 ,new Body("Titan", 6.7652f * (float)Math.Pow(10, -8), Moons.getVelocity(VOSP87.getPlanetVelocity("sat", 2458120, 0.5f).toVector(), 0.1839f), Moons.getPosition(VOSP87.getPlanetPosition("sat", 2458120).toVector(), 0.00817108f), Color.White)
+                ,new Body("Enceladus", 5.433f * (float)Math.Pow(10, -11), Moons.getVelocity(VOSP87.getPlanetVelocity("sat", 2458120, 0.5f).toVector(), 0.424f), Moons.getPosition(VOSP87.getPlanetPosition("sat", 2458120).toVector(), 0.00159122f), Color.GhostWhite)
                 ,new Body("Uranus", 4.370f * (float)Math.Pow(10, -5), VOSP87.getPlanetVelocity("ura", 2458120, 0.5f ).toVector(), VOSP87.getPlanetPosition("ura", 2458120).toVector(), Color.Teal)
                 ,new Body("Neptune", 5.150f * (float)Math.Pow(10, -5), VOSP87.getPlanetVelocity("nep", 2458120, 0.5f ).toVector(), VOSP87.getPlanetPosition("nep", 2458120).toVector(), Color.DarkBlue)
                 //,new Body("Solar System Destroyer", 20f, new Vector(1.082f, -0.128f), new Vector(-60.06f, 15f), Color.OrangeRed)
@@ -72,7 +85,7 @@ namespace Planets
             contx = BufferedGraphicsManager.Current;
             bg = contx.Allocate(this.CreateGraphics(), new Rectangle(0, 0, szx, szy));
 
-            timer1.Interval = 6;
+            timer1.Interval = 2;
             timer1.Start();
         }
 
@@ -92,6 +105,12 @@ namespace Planets
                 bg.Graphics.Clear(Color.Black);
                 foreach (Body b in s.Bodies)
                 {
+                    if(fl != null)
+                    {
+                        flx = fl.position.X;
+                        fly = fl.position.Y;
+                    }
+
                     bool toosmall = false;
                     bool toosmall2 = false;
                     float sz = 30 * b.Mass / (size);
@@ -103,29 +122,20 @@ namespace Planets
                     {
                         sz = 3;
                     }
-                    else if (sz <= 0.000006f && sz > 0.0000004f)
+                    else if (sz <= 0.000006f && sz > 0.00000015f)
                     {
                         sz = 2;
                         toosmall2 = true;
                     }
-                    else if(sz <= 0.0000004f && sz > 0.0000001f)
+                    else if(sz <= 0.00000015f && sz > 0.00000005f)
                     {
                         sz = 1;
                         toosmall = true;
                         toosmall2 = true;
                     }
-                    else if (sz <= 0.0000001f)
+                    else if (sz <= 0.00000005f)
                     {
                         continue;
-                    }
-
-                    float flx = 0;
-                    float fly = 0;
-
-                    if(fl != null)
-                    {
-                        flx = fl.position.X;
-                        fly = fl.position.Y;
                     }
 
                     using (Brush br = new SolidBrush(b.Color))
@@ -138,9 +148,12 @@ namespace Planets
                                 {
                                     if(fl == null || arts == true)
                                     {
-                                        bg.Graphics.DrawLine(pen, scale(-size, size, 0, szx, b.p[i].X - posx - flx), scale(-size, size, 0, szy, b.p[i].Y - posy - fly), scale(-size, size, 0, szx, b.p[i + 1].X - posx - flx), scale(-size, size, 0, szy, b.p[i + 1].Y - posy - fly));
+                                        if (scale(-size, size, 0, szx, b.p[i].X - posx - flx) <= szx && scale(-size, size, 0, szx, b.p[i].X - posx - flx) >= 0 && scale(-size, size, 0, szy, b.p[i].Y - posy - fly) <= szy && scale(-size, size, 0, szy, b.p[i].Y - posy - fly) >= 0)
+                                        {
+                                            bg.Graphics.DrawLine(pen, scale(-size, size, 0, szx, b.p[i].X - posx - flx), scale(-size, size, 0, szy, b.p[i].Y - posy - fly), scale(-size, size, 0, szx, b.p[i + 1].X - posx - flx), scale(-size, size, 0, szy, b.p[i + 1].Y - posy - fly));
+                                        }
                                     }
-                                    else if(b != fl)
+                                    else if(b != fl && scale(-size, size, 0, szx, b.p[i].X - posx - fl.p[i].X) <= szx && scale(-size, size, 0, szx, b.p[i].X - posx - fl.p[i].X) >= 0 && scale(-size, size, 0, szy, b.p[i].Y - posy - fl.p[i].Y) <= szy && scale(-size, size, 0, szy, b.p[i].Y - posy - fl.p[i].Y) >= 0)
                                     {
                                         bg.Graphics.DrawLine(pen, scale(-size, size, 0, szx, b.p[i].X - posx - fl.p[i].X), scale(-size, size, 0, szy, b.p[i].Y - posy - fl.p[i].Y), scale(-size, size, 0, szx, b.p[i + 1].X - posx - fl.p[i + 1].X), scale(-size, size, 0, szy, b.p[i + 1].Y - posy - fl.p[i + 1].Y));
                                     }
@@ -254,6 +267,8 @@ namespace Planets
             if(fl == null)
             {
                 label6.Text = "Following: none";
+                flx = 0;
+                fly = 0;
             }
             else
             {

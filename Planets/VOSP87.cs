@@ -113,7 +113,7 @@ namespace Planets
         {
             PreciseVector l0 = getPlanetPosition(abb, JDE);
             PreciseVector dl = getPlanetPosition(abb, JDE + deltaT);
-            return ((dl - l0) / (deltaT/58.14f)); //convert from au/days - 58.1 because wolfram said so (1 / (earth average velocity in au/day))
+            return ((dl - l0) * (58.14f/deltaT)); //convert from au/days - 58.1 because wolfram said so (1 / (earth average velocity in au/day))
         }
 
         private static double getTerm(string line, float t)
