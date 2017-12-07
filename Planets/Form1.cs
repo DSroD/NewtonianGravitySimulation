@@ -72,7 +72,7 @@ namespace Planets
                 ,new Body("Uranus", 4.370f * (float)Math.Pow(10, -5), VOSP87.getPlanetVelocity("ura", 2458120, 0.5f ).toVector(), VOSP87.getPlanetPosition("ura", 2458120).toVector(), Color.Teal)
                 ,new Body("Neptune", 5.150f * (float)Math.Pow(10, -5), VOSP87.getPlanetVelocity("nep", 2458120, 0.5f ).toVector(), VOSP87.getPlanetPosition("nep", 2458120).toVector(), Color.DarkBlue)
                 //,new Body("Solar System Destroyer", 20f, new Vector(1.082f, -0.128f), new Vector(-60.06f, 15f), Color.OrangeRed)
-                //,new Body("Solar System Destroyer2", 80f, new Vector(-3.082f, 2.128f), new Vector(60.06f, -25f), Color.OrangeRed)
+                //,new Body("Solar System Destroyer2", 800f, new Vector(-3.082f, 2.128f), new Vector(60.06f, -25f), Color.OrangeRed)
 
             };
 
@@ -113,27 +113,27 @@ namespace Planets
 
                     bool toosmall = false;
                     bool toosmall2 = false;
-                    float sz = 30 * b.Mass / (size);
-                    if (sz <= 4 && sz > 0.0001f)
+                    float sz = 30 * (float) Math.Sqrt(b.Mass) / (size);
+                    if (sz <= 4 && sz > 0.1f)
                     {
                         sz = 4;
                     }
-                    else if (sz <= 0.0001f && sz > 0.000006f)
+                    else if (sz <= 0.1f && sz > 0.06f)
                     {
                         sz = 3;
                     }
-                    else if (sz <= 0.000006f && sz > 0.00000015f)
+                    else if (sz <= 0.06f && sz > 0.0015f)
                     {
                         sz = 2;
                         toosmall2 = true;
                     }
-                    else if(sz <= 0.00000015f && sz > 0.00000005f)
+                    else if(sz <= 0.0015f && sz > 0.0005f)
                     {
                         sz = 1;
                         toosmall = true;
                         toosmall2 = true;
                     }
-                    else if (sz <= 0.00000005f)
+                    else if (sz <= 0.0005f)
                     {
                         continue;
                     }
@@ -291,9 +291,11 @@ namespace Planets
             {
                 if (!pause) break;
                 s.simulateStep(deltaT, i);
-                drawPlanets();
+                //drawPlanets();
 
             }
+
+            drawPlanets();
         }
     }
 }
